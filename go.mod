@@ -1,4 +1,5 @@
-module rootnet
+module github.com/ProductionPanic/rootnet-cli
+
 
 go 1.25
 

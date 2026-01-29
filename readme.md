@@ -17,6 +17,5 @@ A high-performance Go-based CLI for managing and connecting to project servers. 
 
 ### 2. Build & Install
 ```bash
-# install from repository
-go install https://github.com/ProductionPanic/rootnet-cli.git@latest
+go install github.com/ProductionPanic/rootnet-cli@latest 
 ```
