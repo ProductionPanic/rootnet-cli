@@ -7,7 +7,6 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/atotto/clipboard"
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
@@ -97,8 +96,6 @@ func main() {
 	}
 
 	switch arg {
-	case "add":
-		addFromClipboard()
 	case "get":
 		search := ""
 		if len(os.Args) > 2 {
@@ -170,16 +167,4 @@ func runSSH(host string) {
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Run()
-}
-
-func addFromClipboard() {
-	text, err := clipboard.ReadAll()
-	if err != nil || !strings.Contains(text, "|") {
-		fmt.Println("Error: Invalid clipboard content.")
-		return
-	}
-	f, _ := os.OpenFile(getHostsFile(), os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
-	defer f.Close()
-	f.WriteString("\n" + strings.TrimSpace(text))
-	fmt.Println("Added to hosts.")
 }
