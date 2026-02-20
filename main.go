@@ -146,9 +146,6 @@ func runFilter(search string, outputOnly bool) string {
 	m := model{list: list.New(uiItems, list.NewDefaultDelegate(), 0, 0)}
 	m.list.Title = "Rootnet Projects"
 
-	m.list.SetFilteringEnabled(true)
-	m.list.SetFilterState(list.Filtering)
-
 	// If we're in "get" mode, we need to hide the TUI from stdout
 	// so the connection string is the only thing the shell sees.
 	// Bubble Tea uses stderr for the UI by default, which is perfect.
